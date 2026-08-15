@@ -1,8 +1,7 @@
 import "dotenv/config";
  import express from "express";
 
-import path from "path";
-import { fileURLToPath } from "url";
+
 
 import authRoutes from "./routes/auth.route.js";
 import messageRoutes from "./routes/message.route.js";
@@ -13,8 +12,8 @@ import { ENV } from "./lib/env.js";
 
 const app = express();
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+// const __filename = fileURLToPath(import.meta.url);
+// const __dirname = path.dirname(__filename);
 
 const PORT = ENV.PORT || 5001;
 app.use(express.json()) //req.body
@@ -22,13 +21,13 @@ app.use(express.json()) //req.body
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
 
-if (ENV.NODE_ENV === "production") {
-    app.use(express.static(path.join(__dirname, "../../frontend/dist")));
+// if (ENV.NODE_ENV === "production") {
+//     app.use(express.static(path.join(__dirname, "../../frontend/dist")));
 
-    app.get("*", (req, res) => {
-        res.sendFile(path.join(__dirname, "../../frontend/dist/index.html"));
-    });
-}
+//     app.get("*", (req, res) => {
+//         res.sendFile(path.join(__dirname, "../../frontend/dist/index.html"));
+//     });
+// }
 
 app.listen(PORT, "0.0.0.0",() => {
     console.log("Server running on port:", PORT)
