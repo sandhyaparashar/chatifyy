@@ -1,9 +1,11 @@
 import React from 'react'
 
-function chatpage() {
+function ChatPage() {
   return (
-    <div>chatpage</div>
+    <div className="text-white text-4xl font-bold z-6">
+      Chat
+    </div>
   )
 }
 
-export default chatpage
+export default ChatPage
