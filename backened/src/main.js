@@ -13,13 +13,18 @@ const app = express();
 // <-- Final CORS setup with your real URL -->
 app.use(
   cors({
-    origin: "https://chatifyy-l3md-32ozymaa4-disco5.vercel.app",
+    origin:[
+       "http://localhost:5173",
+       "https://chatifyy-l3md-32ozymaa4-disco5.vercel.app"
+    ],
+             
     credentials: true,
   })
 );
 
 const PORT = ENV.PORT || 5001;
 app.use(express.json()) //req.body
+app.use(cors({origin:ENV.CLIENT_URL,credentials:true}))
 app.use(cookieParser())
 
 app.use("/api/auth", authRoutes);
