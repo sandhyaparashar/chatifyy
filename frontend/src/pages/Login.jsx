@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from 'react';
 import { useAuthStore } from "../store/useAuthStore";
-import BorderAnimatedContainer from "../components/bordercontainer";
+import BorderAnimatedContainer from "../components/BorderAnimatedcontainer";
 import { MessageCircle, Mail, Loader, Lock } from "lucide-react";
 import { Link } from "react-router";
 
