@@ -1,5 +1,6 @@
 import "dotenv/config";
 import express from "express";
+import { app, server } from "../socket/socket.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 
@@ -8,9 +9,9 @@ import messageRoutes from "./routes/message.route.js";
 import { connectDB } from "./lib/db.js";
 import { ENV } from "./lib/env.js";
 
-const app = express();
 
-// <-- Final CORS setup with your real URL -->
+
+
 app.use(
   cors({
     origin:[
@@ -23,14 +24,16 @@ app.use(
 );
 
 const PORT = ENV.PORT || 5001;
-app.use(express.json()) //req.body
-app.use(cors({origin:ENV.CLIENT_URL,credentials:true}))
+app.use(express.json({ limit: "10mb" })); 
+app.use(express.urlencoded({ limit: "10mb", extended: true }));
+
+
 app.use(cookieParser())
 
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
 
-app.listen(PORT, "0.0.0.0", () => {
+server.listen(PORT, "0.0.0.0", () => {
     console.log("Server running on port:", PORT)
     connectDB()
 });
