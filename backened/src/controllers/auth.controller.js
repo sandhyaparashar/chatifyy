@@ -127,7 +127,11 @@ export const updateProfile = async(req,res)=>{
         const{profilePic} = req.body;
         if(!profilePic) return res.status(400).json({message:"profile pic is required"})
              const userId = req.user._id;
-            const uploadResponse = await cloudinary.uploader.upload(profilePic)
+           
+const uploadResponse = await cloudinary.uploader.upload(profilePic, {
+    timeout: 120000, 
+    folder: "chatify_profiles" 
+});
         const updateUser = await User.findByIdAndUpdate(userId,
             {profilePic:uploadResponse.secure_url},
             {new:true});

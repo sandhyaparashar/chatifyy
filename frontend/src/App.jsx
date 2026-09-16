@@ -4,15 +4,25 @@ import Login from "./pages/Login";
 import SignUp from "./pages/Sign"; 
 import { useEffect, useState } from "react";
 import { useAuthStore } from "./store/useAuthStore";
+import { useSocketStore } from "./store/useSocketStore";
 import PageLoader from "./components/PageLoader";
 import {Toaster} from "react-hot-toast";
 
 
 function App() {
- const{checkAuth,isCheckingAuth,authUser}=useAuthStore()
+ 
+  const{checkAuth,isCheckingAuth,authUser}=useAuthStore()
+  const {connectSocket, disconnectSocket} = useSocketStore();
   useEffect(()=>{
     checkAuth()
   },[checkAuth]);
+  useEffect(() =>{
+    if(authUser){
+      connectSocket();
+    }else{
+      disconnectSocket();
+    }
+  }, [authUser, connectSocket, disconnectSocket])
 
   console.log({authUser});
   if(isCheckingAuth) return <PageLoader />;
