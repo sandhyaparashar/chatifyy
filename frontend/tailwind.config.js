@@ -1,0 +1,25 @@
+import daisyui from 'daisyui';
+
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}", // This tells Tailwind to look at your React files!
+  ],
+  
+      theme: {
+        extend: {
+            animation: {
+                'border': 'border 4s linear infinite',
+            },
+            keyframes: {
+                'border': {
+                    to: { '--border-angle': '360deg' },
+                }
+            }                      
+        
+    
+    },
+  },
+  plugins: [daisyui],
+}

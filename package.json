@@ -17,5 +17,9 @@
     "url": "https://github.com/sandhyaparashar/chatifyy/issues"
   },
   "homepage": "https://github.com/sandhyaparashar/chatifyy#readme",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "lucide-react": "^1.34.0",
+    "socket.io": "^4.8.3"
+  }
 }
