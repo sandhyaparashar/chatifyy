@@ -9,7 +9,8 @@ const io = new Server(server, {
   cors: {
     origin: [
       "http://localhost:5173",                  // Local frontend (Vite)
-      "https://chatifyy-l3md.vercel.app"        // Your live Vercel deployment
+      "https://chatifyy-l3md.vercel.app",
+          "https://chatifyy-l3md-9a1bw19je-disco5.vercel.app"    
     ],
     methods: ["GET", "POST"],
     credentials: true,
